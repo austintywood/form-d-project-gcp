@@ -1,3 +1,6 @@
+# GCP Service Account Credentials file
+creds.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
