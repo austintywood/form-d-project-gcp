@@ -24,3 +24,12 @@ python -m pip install -r requirements.txt
 # Run setup script
 python setup.py --bucket <BUCKET-NAME> --dataset <DATASET_NAME>
 ```
+
+You can execute the following two scripts to run the pipeline:
+```powershell
+# Ingest SEC Form D .tsv files to Google Cloud Storage bucket (data lake)
+python scripts/sec_to_gcs.py
+
+# Load the data lake to Google BigQuery (data warehouse, landing)
+python scripts/gcs_to_bq.py
+```
