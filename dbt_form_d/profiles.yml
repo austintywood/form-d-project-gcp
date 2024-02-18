@@ -1,0 +1,14 @@
+dbt_form_d:
+  outputs:
+    dev:
+      dataset: form_d
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile:
+      location: US
+      method: service-account
+      priority: interactive
+      project:
+      threads: 4
+      type: bigquery
+  target: dev
