@@ -90,14 +90,10 @@ def setup_dbt_profiles_yml(root_dir):
         content: dict = json.load(f)
     project_id = content.get('project_id')
 
-    # Set the dbt profiles directory
-    dbt_project_name = 'dbt_form_d'
-    profiles_dir = os.path.join(root_dir, dbt_project_name)
-    add_dotenv('DBT_PROFILES_DIR', profiles_dir)
 
     # Verify the existence of the profiles.yml file
     # Warn & return if not exists
-    profiles_yml_file = os.path.join(root_dir, dbt_project_name, 'profiles.yml')
+    profiles_yml_file = os.path.join(root_dir, 'dbt_form_d', 'profiles.yml')
     if not os.path.isfile(profiles_yml_file):
         warning = dedent(f"""
             {profiles_yml_file} does not exist.
