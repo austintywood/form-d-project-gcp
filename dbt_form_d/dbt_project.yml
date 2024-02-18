@@ -1,0 +1,19 @@
+name: 'dbt_form_d'
+version: '1.0.0'
+config-version: 2
+profile: 'dbt_form_d'
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_form_d:
+    form_d:
+      +materialized: view
