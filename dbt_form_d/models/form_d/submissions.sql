@@ -3,10 +3,8 @@
 select      ACCESSIONNUMBER                     as accession_number
             , FILE_NUM                          as file_num
             , case
-                when regexp_contains(FILING_DATE, r'[A-Za-z]') then
-                    parse_date('%d-%b-%Y', FILING_DATE)
-                else
-                    cast(FILING_DATE as datetime)
+                when regexp_contains(FILING_DATE, r'[A-Za-z]') then parse_date('%d-%b-%Y', FILING_DATE)
+                else cast(FILING_DATE as datetime)
             end                                 as filing_datetime
             , SIC_CODE                          as sic_code
             , SCHEMAVERSION                     as schema_version

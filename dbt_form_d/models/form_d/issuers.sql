@@ -2,12 +2,8 @@
 
 select      ACCESSIONNUMBER                     as accession_number
             , case
-                when IS_PRIMARYISSUER_FLAG = 'YES' then
-                    true
-                when IS_PRIMARYISSUER_FLAG = 'NO' then
-                    false
-                else
-                    null
+                when IS_PRIMARYISSUER_FLAG = 'YES' then true
+                when IS_PRIMARYISSUER_FLAG = 'NO' then false
             end                                 as is_primary_issuer_flag
             , ISSUER_SEQ_KEY                    as issuer_seq_key
             , regexp_replace(CIK, r'^0+', '')   as cik
