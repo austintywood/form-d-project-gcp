@@ -1,0 +1,12 @@
+sources:
+  - name: raw
+    loader: bigquery
+    database: form-d-project
+    schema: raw
+    tables:
+      - name: issuers
+      - name: offerings
+      - name: recipients
+      - name: related_persons
+      - name: signatures
+      - name: submissions
