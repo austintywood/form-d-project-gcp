@@ -60,6 +60,97 @@ models:
         data_type: string
       - name: year_of_inc_value_entered
         data_type: string
+  - name: offerings
+    description: Form D Offerings data cleaned from raw entity data.
+    config:
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: ['accession_number']
+    columns:
+      - name: accession_number
+        data_type: string
+      - name: industry_group_type
+        data_type: string
+      - name: investment_fund_type
+        data_type: string
+      - name: is_40_act
+        data_type: bool
+      - name: revenue_range
+        data_type: string
+      - name: aggregate_net_asset_value_range
+        data_type: string
+      - name: federal_exemptions_items_list
+        data_type: string
+      - name: is_amendment
+        data_type: bool
+      - name: previous_accessionnumber
+        data_type: string
+      - name: sale_date
+        data_type: date
+      - name: yet_to_occur
+        data_type: bool
+      - name: more_than_one_year
+        data_type: bool
+      - name: is_equity_type
+        data_type: bool
+      - name: is_debt_type
+        data_type: bool
+      - name: is_option_to_acquire_type
+        data_type: bool
+      - name: is_security_to_be_acquired_type
+        data_type: bool
+      - name: is_pooled_investment_fund_type
+        data_type: bool
+      - name: is_tenant_incommon_type
+        data_type: bool
+      - name: is_mineral_property_type
+        data_type: bool
+      - name: is_other_type
+        data_type: bool
+      - name: description_of_other_type
+        data_type: string
+      - name: is_business_combination_trans
+        data_type: bool
+      - name: bus_comb_clarification_of_resp
+        data_type: string
+      - name: minimum_investment_accepted
+        data_type: int64
+      - name: over_100_recipient_flag
+        data_type: bool
+      - name: total_offering_amount
+        data_type: string
+      - name: total_amount_sold
+        data_type: int64
+      - name: total_remaining
+        data_type: string
+      - name: sales_amt_clarification_of_resp
+        data_type: string
+      - name: has_non_accredited_investors
+        data_type: bool
+      - name: number_non_accredited_investors
+        data_type: int64
+      - name: total_number_already_invested
+        data_type: int64
+      - name: sales_comm_dollar_amount
+        data_type: int64
+      - name: sales_comm_is_estimate
+        data_type: bool
+      - name: finders_fee_dollar_amount
+        data_type: int64
+      - name: finders_fee_is_estimate
+        data_type: bool
+      - name: finder_fee_clarification_of_resp
+        data_type: string
+      - name: gross_proceeds_used_dollar_amount
+        data_type: int64
+      - name: gross_proceeds_used_is_estimate
+        data_type: bool
+      - name: gross_proceeds_used_clar_of_resp
+        data_type: string
+      - name: authorized_representative
+        data_type: bool
   - name: submissions
     description: Form D Submissions data cleaned from raw entity data.
     config:
