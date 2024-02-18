@@ -39,14 +39,24 @@ python -m pip install -r requirements.txt
     4. Open the Service Account -> Keys -> Add Key -> Create Key (JSON)
     5. Download the .json credentials file to `/path/to/project/.gcp/creds.json`
 
-4. Populate `.env` file and set up GCP resources, including:
+4. Populate `.env` file and set up resources for GCP and dbt, including:
     - Google Cloud Storage Bucket _(data lake)_
         - _Make sure to adhere to bucket naming constraints_
     - Google BigQuery Dataset _(data warehouse, landing)_
         - _`raw` dataset is created during this step. `form_d` dataset is created later by dbt._
+    - `profiles.yml` file
+        - _Due to project structure, environment variables should be set for easy dbt execution_
 ```powershell
 # Run setup script
 python setup.py --bucket <BUCKET-NAME>
+
+# Windows, Powershell
+$env:DBT_PROFILES_DIR=(Get-Location).path + "\dbt_form_d"
+$env:DBT_PROJECT_DIR=(Get-Location).path + "\dbt_form_d"
+
+# Unix, Bash
+export DBT_PROFILES_DIR=$(pwd)/dbt_form_d
+export DBT_PROJECT_DIR=$(pwd)/dbt_form_d
 ```
 
 5. Execute the following two scripts to perform the following steps.
@@ -60,19 +70,7 @@ python scripts/sec_to_gcs.py
 python scripts/gcs_to_bq.py
 ```
 
-6. Due to project structure, set the following environment variables for easy dbt execution:
-```bash
-# Unix, Bash
-export DBT_PROFILES_DIR=$(pwd)/dbt_form_d
-export DBT_PROJECT_DIR=$(pwd)/dbt_form_d
-```
-```powershell
-# Windows, Powershell
-$env:DBT_PROFILES_DIR=(Get-Location).path + "\dbt_form_d"
-$env:DBT_PROJECT_DIR=(Get-Location).path + "\dbt_form_d"
-```
-
-7. Run the dbt pipeline
+6. Run the dbt pipeline
 ```powershell
 dbt run
 ```

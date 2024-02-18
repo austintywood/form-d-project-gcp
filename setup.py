@@ -95,13 +95,23 @@ def setup_dbt_profiles_yml(root_dir):
     # Warn & return if not exists
     profiles_yml_file = os.path.join(root_dir, 'dbt_form_d', 'profiles.yml')
     if not os.path.isfile(profiles_yml_file):
-        warning = dedent(f"""
-            {profiles_yml_file} does not exist.
-            Unable to set up dbt at this time.
-            Pull git and try again.
-        """)
-        logging.warning(warning)
-        return
+        with open(profiles_yml_file, 'w') as f:
+            f.write(dedent(f"""
+                dbt_form_d:
+                  outputs:
+                    dev:
+                      dataset: form_d
+                      job_execution_timeout_seconds: 300
+                      job_retries: 1
+                      keyfile:
+                      location: US
+                      method: service-account
+                      priority: interactive
+                      project:
+                      threads: 4
+                      type: bigquery
+                  target: dev
+            """).strip())
 
     # Populate the keyfile and project values in the profiles.yml file
     with open(profiles_yml_file, 'r') as f:
