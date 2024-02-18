@@ -8,7 +8,6 @@ from google.cloud.exceptions import NotFound
 import pandas as pd
 from io import StringIO
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import logging
 
 
 def gcs_tsv_to_bq_table(
